@@ -29,25 +29,20 @@ import './fonts/OpenDyslexia/opendyslexic-bolditalic-webfont.woff2'
 //#region ⬇⬇ All Saga functions, below:
 // ⬇ rootSaga below:
 function* rootSaga() {
-  yield takeEvery('GET_RESULTS', getResults);
   yield takeEvery('GET_FAVORITES',getFavorites);
   // listen for dispatch for search results GET
   yield takeEvery('SEARCH_BY_KEYWORD', searchSaga);
-
 }; // End rootSaga
 
 // searchSaga
 function* searchSaga(action) {
   console.log(`in searchSaga keyword ${action.payload}`);
-
   try {
     const response = axios.get(`/api/search/?q=${action.payload}`);
-
     yield put({
       type: 'SET_RESULTS',
       payload: response.data
     });
-
     console.log(response.data);
 
   } catch (error) {
@@ -100,7 +95,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 // ⬇ Create store:
 const store = createStore(
-  combineReducers({ searchResults }),
+  combineReducers({ searchResults, favoriteResults }),
   applyMiddleware(sagaMiddleware, logger),
 );
 
