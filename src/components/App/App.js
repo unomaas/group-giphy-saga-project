@@ -4,13 +4,24 @@ import SearchView from '../SearchView/SearchView';
 import SearchItem from '../SearchItem/SearchItem';
 import FavoritesView from '../FavoritesView/FavoritesView';
 import FavoritesItem from '../FavoritesItem/FavoritesItem';
+import { Route, HashRouter as Router } from 'react-router-dom';
 
 function App(props) {
   return (
-    <div>
-      <Header />
-      <h1>Giphy Search!</h1>
-    </div>
+    <Router>
+      <div>
+
+        <Header />
+
+        <Route path='/' exact>
+          <SearchView />
+        </Route>
+
+        <Route path='/favorites'>
+          <FavoritesView />
+        </Route>
+      </div>
+    </Router>
   );
 }
 
