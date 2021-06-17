@@ -1,5 +1,5 @@
 //#region ⬇⬇ All document setup, below:
-// ⬇ App Setup:
+// ⬇ App & index Setup:
 import App from './components/App/App';
 import './index.css';
 // ⬇ React/Redux Setup:
@@ -29,31 +29,24 @@ import './fonts/OpenDyslexia/opendyslexic-bolditalic-webfont.woff2'
 //#region ⬇⬇ All Saga functions, below:
 // ⬇ rootSaga below:
 function* rootSaga() {
-  yield takeEvery('GET_RESULTS', getResults);
-  yield takeEvery('GET_FAVORITES',getFavorites);
-  // listen for dispatch for search results GET
+  yield takeEvery('GET_FAVORITES', getFavorites);
   yield takeEvery('SEARCH_BY_KEYWORD', searchSaga);
-
 }; // End rootSaga
 
-// searchSaga
+// ⬇ searchSaga below:
 function* searchSaga(action) {
-  console.log(`in searchSaga keyword ${action.payload}`);
-
+  console.log(`In searchSaga, keyword: ${action.payload}`);
   try {
-    const response = axios.get(`/api/search/?q=${action.payload}`);
-
-    yield put({
-      type: 'SET_RESULTS',
-      payload: response.data
-    });
-
-    console.log(response.data);
-
-  } catch (error) {
-    console.log('Could not complete search: ', error);
-  }
-}
+    // ⬇ Calling to server to get search data:
+    const response = yield axios.get(`/api/search/?q=${action.payload}`);
+    console.log('Response is:', response.data);
+    // ⬇ Sending the data from the server to the reducer to hold:
+    yield put({ type: 'SET_RESULTS', payload: response.data });
+  } // End try
+  catch (error) {
+    console.error('Could not complete search: ', error);
+  } // End catch
+} // End searchSaga
 
 // ⬇ getFavorites below: 
 function* getFavorites() {
@@ -61,9 +54,9 @@ function* getFavorites() {
   try {
     // ⬇ Calling to server to load result data:
     const response = yield axios.get('/api/favorites');
-    console.log('Response favorites:', response.data)
+    console.log('Response is:', response.data)
     // ⬇ Sending the data from the server to the reducer to hold:
-    yield put({type: 'SET_FAVORITES', payload: response.data});
+    yield put({ type: 'SET_FAVORITES', payload: response.data });
   } // End try 
   catch (error) {
     console.error('Error in GET favorites', error)
@@ -71,26 +64,27 @@ function* getFavorites() {
 }; // End getFavorites
 //#endregion ⬆⬆ All Saga functions above. 
 
+
 //#region ⬇⬇ All Reducer functions, below:
-// ⬇ searchResults below:
+// ⬇ searchResults reducer below:
 const searchResults = (state = [], action) => {
   switch (action.type) {
     case 'SET_RESULTS':
       return action.payload;
     default:
       return state;
-  } // End switch}
-}
+  } // End switch
+} // End searchResults
 
-// ⬇ favoriteResults below:
-const favoriteResults = (state =[], action) => {
-  switch(action.type) {
+// ⬇ favoriteResults reducer below:
+const favoriteResults = (state = [], action) => {
+  switch (action.type) {
     case 'SET_FAVORITES':
       return action.payload;
     default:
       return state;
-  }
-}
+  } // End switch
+} // End favoriteResults
 //#endregion ⬆⬆ All Reducer functions above. 
 
 
@@ -100,7 +94,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 // ⬇ Create store:
 const store = createStore(
-  combineReducers({ searchResults }),
+  combineReducers({ searchResults, favoriteResults }),
   applyMiddleware(sagaMiddleware, logger),
 );
 

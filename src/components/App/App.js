@@ -3,11 +3,12 @@ import Header from '../Header/Header';
 import SearchView from '../SearchView/SearchView';
 import FavoritesView from '../FavoritesView/FavoritesView';
 import { Route, HashRouter as Router } from 'react-router-dom';
+import './App.css';
 
 function App() {
   return (
     <Router>
-      <div>
+      <div className="App-body">
 
         <Header />
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/favorites'>
           <FavoritesView />
         </Route>
+
       </div>
     </Router>
   );
