@@ -53,7 +53,7 @@ function* getFavorites() {
   console.log('In getFavorites');
   try {
     // ⬇ Calling to server to load result data:
-    const response = yield axios.get('/api/favorites');
+    const response = yield axios.get('/api/favorite');
     console.log('Response is:', response.data)
     // ⬇ Sending the data from the server to the reducer to hold:
     yield put({ type: 'SET_FAVORITES', payload: response.data });
