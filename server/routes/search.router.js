@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
 
-    console.log(req.query)
+    console.log(req.query.q)
 
     axios.get(`api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${req.query.q}`)
     .then(response => {
@@ -19,7 +19,8 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
         console.log(err);
+        res.sendStatus(500)
     })
 })
 
-exports.default = router;
+module.exports = router;

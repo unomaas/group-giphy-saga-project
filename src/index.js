@@ -21,12 +21,12 @@ import axios from 'axios';
 function* rootSaga() {
 
   // listen for dispatch for search results GET
-  yield takeEvery('SEARCH_BY_KEYWORD');
+  yield takeEvery('SEARCH_BY_KEYWORD', searchSaga);
 
 } // End rootSaga
 
 // searchSaga
-function* searchSaga() {
+function* searchSaga(action) {
   console.log(`in searchSaga keyword ${action.payload}`);
 
   try {
@@ -36,6 +36,9 @@ function* searchSaga() {
       type: 'SET_SEARCH',
       payload: response.data
     });
+
+    console.log(response.data);
+
   } catch (error) {
     console.log('Could not complete search: ', error);
   }
