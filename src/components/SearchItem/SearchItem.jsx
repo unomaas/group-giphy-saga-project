@@ -1,11 +1,20 @@
-import React from 'react'
+import React from 'react';
+import './SearchItem.css';
 
-export default function SearchItem() {
+export default function SearchItem({ searchItem }) {
   return (
-    <div>
-      <div>
-        {/* <img src={random?.data?.[49]?.images?.original.url} /> */}
+    <div className="SearchItem-wrapper">
+
+      <div className="SearchItem-GIF">
+        {/* <img src={searchItem?.data?.data?.[49]?.images?.original.url} /> */}
       </div>
+
+      <div className="SearchItem-Fav">
+        <button>
+          Favorite?
+        </button>
+      </div>
+
     </div>
-  )
-}
+  ) // End return
+} // End SearchItem

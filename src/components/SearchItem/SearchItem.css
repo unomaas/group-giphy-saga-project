@@ -1,0 +1,12 @@
+.SearchItem-wrapper {
+  width: 400px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.SearchItem-GIF {
+  border: 1px solid black;
+  height: 400px;
+  width: 400px;
+  border-radius: 10px;
+}
