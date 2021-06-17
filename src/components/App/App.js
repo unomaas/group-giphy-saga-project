@@ -8,6 +8,7 @@ import FavoritesItem from '../FavoritesItem/FavoritesItem';
 function App(props) {
   return (
     <div>
+      <Header />
       <h1>Giphy Search!</h1>
     </div>
   );
