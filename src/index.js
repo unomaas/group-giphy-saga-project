@@ -31,22 +31,29 @@ import './fonts/OpenDyslexia/opendyslexic-bolditalic-webfont.woff2'
 function* rootSaga() {
   yield takeEvery('GET_RESULTS', getResults);
   yield takeEvery('GET_FAVORITES',getFavorites);
+  // listen for dispatch for search results GET
+  yield takeEvery('SEARCH_BY_KEYWORD', searchSaga);
+
 }; // End rootSaga
 
-// ⬇ getResults below: 
-function* getResults() {
-  console.log('In getResults Saga');
+// searchSaga
+function* searchSaga(action) {
+  console.log(`in searchSaga keyword ${action.payload}`);
+
   try {
-    // ⬇ Calling to server to load result data:
-    const response = yield axios.get('/api/search');
-    console.log('Response is:', response.data);
-    // ⬇ Sending the data from the server to the reducer to hold:
-    yield put({ type: 'SET_RESULTS', payload: response.data });
-  } // End try
-  catch (error) {
-    console.error('Error is:', error);
-  } // End catch
-}; // End getResults
+    const response = axios.get(`/api/search/?q=${action.payload}`);
+
+    yield put({
+      type: 'SET_RESULTS',
+      payload: response.data
+    });
+
+    console.log(response.data);
+
+  } catch (error) {
+    console.log('Could not complete search: ', error);
+  }
+}
 
 // ⬇ getFavorites below: 
 function* getFavorites() {
@@ -62,8 +69,7 @@ function* getFavorites() {
     console.error('Error in GET favorites', error)
   } // End catch
 }; // End getFavorites
-//#endregion ⬆⬆ All Saga functions above.
-
+//#endregion ⬆⬆ All Saga functions above. 
 
 //#region ⬇⬇ All Reducer functions, below:
 // ⬇ searchResults below:
