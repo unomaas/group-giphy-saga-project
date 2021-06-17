@@ -41,7 +41,7 @@ function* searchSaga(action) {
     const response = yield axios.get(`/api/search/?q=${action.payload}`);
     console.log('Response is:', response.data);
     // ⬇ Sending the data from the server to the reducer to hold:
-    yield put({ type: 'SET_RESULTS', payload: response.data });
+    yield put({ type: 'SET_RESULTS', payload: response.data.data });
   } // End try
   catch (error) {
     console.error('Could not complete search: ', error);
