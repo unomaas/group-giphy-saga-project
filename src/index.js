@@ -29,8 +29,8 @@ import './fonts/OpenDyslexia/opendyslexic-bolditalic-webfont.woff2'
 //#region ⬇⬇ All Saga functions, below:
 // ⬇ rootSaga below:
 function* rootSaga() {
-  yield takeEvery('GET_RESULTS', getResults);
-  yield takeEvery('GET_FAVORITES',getFavorites);
+  // yield takeEvery('GET_RESULTS', /*getResults*/);
+  // yield takeEvery('GET_FAVORITES',/*getFavorites*/);
   // listen for dispatch for search results GET
   yield takeEvery('SEARCH_BY_KEYWORD', searchSaga);
 
@@ -41,14 +41,16 @@ function* searchSaga(action) {
   console.log(`in searchSaga keyword ${action.payload}`);
 
   try {
-    const response = axios.get(`/api/search/?q=${action.payload}`);
+    const response = yield axios.get(`/api/search/?q=${action.payload}`);
+
+
+    console.log("this is response data", response.data);
 
     yield put({
       type: 'SET_RESULTS',
-      payload: response.data
+      payload: response.data.data
     });
 
-    console.log(response.data);
 
   } catch (error) {
     console.log('Could not complete search: ', error);
