@@ -3,7 +3,6 @@
   color: white;
   min-width: 300px;
   max-width: 100%;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -22,3 +21,6 @@
   display: inline;
 }
 
+.header-image {
+  padding: 10px;
+}

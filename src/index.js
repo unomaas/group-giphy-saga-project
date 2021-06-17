@@ -1,6 +1,7 @@
 //#region ⬇⬇ All document setup, below:
 // ⬇ App Setup:
 import App from './components/App/App';
+import './index.css';
 // ⬇ React/Redux Setup:
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -13,6 +14,15 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 // ⬇ Server Calls Setup:
 import axios from 'axios';
+// ⬇ Font setup:
+import './fonts/OpenDyslexia/opendyslexic-regular-webfont.woff'
+import './fonts/OpenDyslexia/opendyslexic-regular-webfont.woff2'
+import './fonts/OpenDyslexia/opendyslexic-bold-webfont.woff'
+import './fonts/OpenDyslexia/opendyslexic-bold-webfont.woff2'
+import './fonts/OpenDyslexia/opendyslexic-italic-webfont.woff'
+import './fonts/OpenDyslexia/opendyslexic-italic-webfont.woff2'
+import './fonts/OpenDyslexia/opendyslexic-bolditalic-webfont.woff'
+import './fonts/OpenDyslexia/opendyslexic-bolditalic-webfont.woff2'
 //#endregion ⬆⬆ All document setup above.
 
 
