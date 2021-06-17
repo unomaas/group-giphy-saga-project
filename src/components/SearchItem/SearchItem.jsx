@@ -6,7 +6,7 @@ export default function SearchItem({ searchItem }) {
     <div className="SearchItem-wrapper">
 
       <div className="SearchItem-GIF">
-        {/* <img src={searchItem?.data?.data?.[49]?.images?.original.url} /> */}
+        <img src={searchItem.images?.original.url} />
       </div>
 
       <div className="SearchItem-Fav">

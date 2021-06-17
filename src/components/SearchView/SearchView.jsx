@@ -33,7 +33,7 @@ export default function SearchView() {
   //#endregion ⬆⬆ Event handles above. 
 
 
-  console.log(searchResults);
+  console.log('searchResults is:', searchResults);
   // ⬇ Rendering:
   return (
     <div className="SearchView-wrapper">
