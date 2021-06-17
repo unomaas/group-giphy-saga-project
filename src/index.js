@@ -20,7 +20,26 @@ import axios from 'axios';
 // ⬇ rootSaga below:
 function* rootSaga() {
 
+  // listen for dispatch for search results GET
+  yield takeEvery('SEARCH_BY_KEYWORD');
+
 } // End rootSaga
+
+// searchSaga
+function* searchSaga() {
+  console.log(`in searchSaga keyword ${action.payload}`);
+
+  try {
+    const response = axios.get(`/api/search/?q=${action.payload}`);
+
+    yield put({
+      type: 'SET_SEARCH',
+      payload: response.data
+    });
+  } catch (error) {
+    console.log('Could not complete search: ', error);
+  }
+}
 //#endregion ⬆⬆ All Saga functions above. 
 
 
