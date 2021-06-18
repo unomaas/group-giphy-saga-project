@@ -3,7 +3,7 @@ import React from 'react'
 export default function FavoritesItem({ favoriteItem }) {
   return (
     <li className="FavoritesItem-li">
-      {favoriteItem.gif_url} 
+      <img src={favoriteItem.gif_url} /> 
       <button>Funny</button>
       <button>Cohort</button>
       <button>Cartoon</button>
