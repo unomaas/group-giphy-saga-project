@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div>
       <header className='header'>
-        <img className='header-image' src="./images/GenLogoW.svg" height="60"></img>
+        <img className='header-image' src="./images/GenLogoW1.svg" height="60"></img>
         <nav>
           <ul className="Header-nav">
             <li>
