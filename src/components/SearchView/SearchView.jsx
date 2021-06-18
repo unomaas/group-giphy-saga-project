@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './SearchView.css';
 import SearchItem from '../SearchItem/SearchItem';
+import { Button } from '@material-ui/core';
+
 //#endregion ⬆⬆ All document setup above.
 
 
@@ -48,12 +50,14 @@ export default function SearchView() {
           type="text"
           onChange={(event) => handleSearchQuery(event)}
         /> &nbsp;
-        <input type="submit" />
+        <Button type="submit">  
+          Submit
+        </Button>
       </form>
 
       <div className="SearchView-results">
         <p>Results:</p>
-        <ul>
+        <ul className="FavoritesView-ul">
           {searchResults.map((searchItem) => {
             return (
               <SearchItem key={searchItem.id} searchItem={searchItem} />
