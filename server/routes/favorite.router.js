@@ -5,22 +5,21 @@ const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-
+  console.log('In Favorites GET');
   // establish query string SQL
-  const queryString = `SELECT * FROM "favorites"`
-
+  const queryString = `SELECT * FROM "favorites";`;
   // inject queryString into DB
   pool.query(queryString)
-
   // async has a result
-  .then( result => {
-    res.sendStatus(result.rows);
-  })
-
-  // error path
-  .catch( err => {
-    console.log('Error getting rows from favorites table', err);
-  })
+    .then( result => {
+      console.log('In .then Favorites, result:', result.rows);
+      res.send(result.rows);
+    }) // End .then
+    // error path
+    .catch( err => {
+      console.log('Error getting rows from favorites table', err);
+      res.sendStatus(500);
+    }); // End .catch
 });
 
 // add a new favorite

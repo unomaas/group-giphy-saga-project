@@ -54,9 +54,9 @@ function* getFavorites() {
   try {
     // ⬇ Calling to server to load result data:
     const response = yield axios.get('/api/favorite');
-    console.log('Response is:', response.data)
+    console.log('Response is:', response.data);
     // ⬇ Sending the data from the server to the reducer to hold:
-    yield put({ type: 'SET_FAVORITES', payload: response });
+    yield put({ type: 'SET_FAVORITES', payload: response.data });
   } // End try 
   catch (error) {
     console.error('Error in GET favorites', error)
