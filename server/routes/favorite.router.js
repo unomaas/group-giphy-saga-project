@@ -9,12 +9,13 @@ router.get('/', (req, res) => {
   // establish query string SQL
   const queryString = `SELECT "favorites".id, "favorites".gif_url, "category".name 
                        FROM "favorites"
-                       JOIN "category"
+                       LEFT JOIN "category"
                        ON "favorites".category_id = "category".id;`;
   // inject queryString into DB
   pool.query(queryString)
   // async has a result
     .then( result => {
+      console.log(result);
       console.log('In .then Favorites, result:', result.rows);
       res.send(result.rows);
     }) // End .then
