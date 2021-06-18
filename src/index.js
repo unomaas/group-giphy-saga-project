@@ -35,7 +35,7 @@ function* rootSaga() {
 }; // End rootSaga
 
 // ⬇ addFavorites below:
-function* addFavorite() {
+function* addFavorite(action) {
   console.log(`In addFavorites, url to add is ${action.payload}`);
 
   // try wrapper for no error path

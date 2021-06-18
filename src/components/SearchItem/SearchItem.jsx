@@ -1,7 +1,13 @@
 import React from 'react';
 import './SearchItem.css';
 
+// bring in dispatch 
+import {useDispatch} from 'react-redux';
+
 export default function SearchItem({ searchItem }) {
+
+  // use as dispatch
+  const dispatch = useDispatch();
 
   const addToFavorites = () => {
     console.log('In addToFavorites, url is:', searchItem.url);
