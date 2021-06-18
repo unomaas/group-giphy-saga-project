@@ -43,7 +43,7 @@ function* addFavorite(action) {
 
     // tell axios to POST the gif url
     // dispatched in the action.payload
-    yield axios.post('/api/favorite', action.payload.images?.original.url);
+    yield axios.post('/api/favorite', action.payload);
 
     // run the get to recieve updated info
     yield put({
