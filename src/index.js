@@ -38,7 +38,7 @@ function* rootSaga() {
 function* addCategory(action) {
   console.log('In addCategory, payload:', action.payload);
   try {
-    yield axios.put(`/api/favorite/:${action.payload.id}`, action.payload.category);
+    yield axios.put(`/api/favorite/${action.payload.id}`, {category: action.payload.category});
   }
   catch (error) {
     console.error('In addCategory, error:', error);
