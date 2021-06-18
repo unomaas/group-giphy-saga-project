@@ -7,7 +7,10 @@ const router = express.Router();
 router.get('/', (req, res) => {
   console.log('In Favorites GET');
   // establish query string SQL
-  const queryString = `SELECT * FROM "favorites";`;
+  const queryString = `SELECT "favorites".id, "favorites".gif_url, "category".name 
+                       FROM "favorites"
+                       JOIN "category"
+                       ON "favorites".category_id = "category".id;`;
   // inject queryString into DB
   pool.query(queryString)
   // async has a result

@@ -39,6 +39,10 @@ function* addCategory(action) {
   console.log('In addCategory, payload:', action.payload);
   try {
     yield axios.put(`/api/favorite/${action.payload.id}`, {category: action.payload.category});
+
+    yield put({
+      type: 'GET_FAVORITES'
+    });
   }
   catch (error) {
     console.error('In addCategory, error:', error);

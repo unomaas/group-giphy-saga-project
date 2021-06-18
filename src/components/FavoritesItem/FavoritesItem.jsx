@@ -25,6 +25,8 @@ export default function FavoritesItem({ favoriteItem }) {
 
       <img src={favoriteItem.gif_url} />
 
+      <p>Category: {favoriteItem.name} </p>
+
       <form onSubmit={handleSubmit}>
         <TextField
           required
