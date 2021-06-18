@@ -2,6 +2,12 @@ import React from 'react';
 import './SearchItem.css';
 
 export default function SearchItem({ searchItem }) {
+
+  const addToFavorites = () => {
+    console.log('In addToFavorites, url is:', searchItem.url);
+    dispatch({ type: 'ADD_TO_FAVORITES', payload: searchItem.url })
+  }
+
   return (
     <div className="SearchItem-wrapper">
 
@@ -10,7 +16,7 @@ export default function SearchItem({ searchItem }) {
       </div>
 
       <div className="SearchItem-Fav">
-        <button>
+        <button onClick={addToFavorites}>
           Favorite?
         </button>
       </div>

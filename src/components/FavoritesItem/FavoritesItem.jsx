@@ -1,9 +1,15 @@
 import React from 'react'
 
-export default function FavoritesItem() {
+export default function FavoritesItem({ favoriteItem }) {
   return (
-    <div>
-      {/* Map over data coming in */}
-    </div>
+    <li className="FavoritesItem-li">
+      {favoriteItem.gif_url} 
+      <button>Funny</button>
+      <button>Cohort</button>
+      <button>Cartoon</button>
+      <button>NSFW</button>
+      <button>Meme</button>
+      <button>Delete</button>
+    </li>
   )
 }
