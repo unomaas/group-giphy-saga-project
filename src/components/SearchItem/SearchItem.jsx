@@ -10,8 +10,8 @@ export default function SearchItem({ searchItem }) {
   const dispatch = useDispatch();
 
   const addToFavorites = () => {
-    console.log('In addToFavorites, url is:', searchItem.url);
-    dispatch({ type: 'ADD_TO_FAVORITES', payload: searchItem.url })
+    console.log('In addToFavorites, url is:', searchItem.images.original.url);
+    dispatch({ type: 'ADD_TO_FAVORITES', payload: searchItem })
   }
 
   return (
