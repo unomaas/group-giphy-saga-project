@@ -27,9 +27,13 @@ router.post('/', (req, res) => {
   
   // gifToFavorite is the body of the request
   // should be the gif url
+<<<<<<< HEAD
   console.log('Req.body is:', req.body);
   
   const gifToFavorite = req.body;
+=======
+  const gifToFavorite = req.body.images?.original.url
+>>>>>>> 7d35ee0be313b34bb4571e1ec67949cce850e5ad
 
   console.log('THIS IS THE GIF URL TO FAVORITE', gifToFavorite)
 
