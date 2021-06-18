@@ -31,13 +31,23 @@ import './fonts/OpenDyslexia/opendyslexic-bolditalic-webfont.woff2'
 function* rootSaga() {
   yield takeEvery('GET_FAVORITES', getFavorites);
   yield takeEvery('SEARCH_BY_KEYWORD', searchSaga);
-  yield takeEvery('ADD_TO_FAVORITES', addFavorite)
+  yield takeEvery('ADD_TO_FAVORITES', addFavorite);
+  yield takeEvery('ADD_CATEGORY', addCategory);
 }; // End rootSaga
+
+function* addCategory(action) {
+  console.log('In addCategory, payload:', action.payload);
+  try {
+    yield axios.put(`/api/favorite/:${action.payload.id}`, action.payload.category);
+  }
+  catch (error) {
+    console.error('In addCategory, error:', error);
+  }
+}
 
 // ⬇ addFavorites below:
 function* addFavorite(action) {
   console.log(`In addFavorites, url to add is ${action.payload.images?.original.url}`);
-
   // try wrapper for no error path
   try {
     // tell axios to POST the gif url
@@ -48,7 +58,6 @@ function* addFavorite(action) {
       type: 'GET_FAVORITES'
     });
   }
-
   // fires on error
   catch (error) {
     console.error(`Issue in POST ${error}`);

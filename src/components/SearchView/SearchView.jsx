@@ -53,11 +53,13 @@ export default function SearchView() {
 
       <div className="SearchView-results">
         <p>Results:</p>
-        {searchResults.map((searchItem) => {
-          return (
-            <SearchItem key={searchItem.id} searchItem={searchItem} />
-          )
-        })}
+        <ul>
+          {searchResults.map((searchItem) => {
+            return (
+              <SearchItem key={searchItem.id} searchItem={searchItem} />
+            )
+          })}
+        </ul>
       </div>
 
     </div>
