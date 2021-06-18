@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchItem.css';
 
 // bring in dispatch 
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export default function SearchItem({ searchItem }) {
 
@@ -15,18 +15,11 @@ export default function SearchItem({ searchItem }) {
   }
 
   return (
-    <div className="SearchItem-wrapper">
-
-      <div className="SearchItem-GIF">
-        <img src={searchItem.images?.original.url} />
-      </div>
-
-      <div className="SearchItem-Fav">
-        <button onClick={addToFavorites}>
-          Favorite?
+    <li className="SearchItem-GIF">
+      <img src={searchItem.images?.original.url} />
+      <button onClick={addToFavorites}>
+        Favorite?
         </button>
-      </div>
-
-    </div>
+    </li>
   ) // End return
 } // End SearchItem
