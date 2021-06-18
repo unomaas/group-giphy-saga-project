@@ -1,8 +1,15 @@
 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 587 173">
   <defs>
     <style>
+      @font-face {
+      font-family: 'opendyslexicregular';
+      src: url('opendyslexic-regular-webfont.woff2') format('woff2'),
+          url('opendyslexic-regular-webfont.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      }
       .cls-1,.cls-2{fill:#fff;}
-      .cls-2{font-size:78px;font-family:OpenDyslexic-Regular, OpenDyslexic;}
+      .cls-2{font-size:78px;font-family:OpenDyslexic-Regular, opendyslexicregular, OpenDyslexic;}
       .cls-3{letter-spacing:-0.03em;}
       .cls-4{letter-spacing:-0.02em;}
       .cls-5{letter-spacing:-0.04em;}
