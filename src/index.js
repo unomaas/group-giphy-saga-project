@@ -31,7 +31,31 @@ import './fonts/OpenDyslexia/opendyslexic-bolditalic-webfont.woff2'
 function* rootSaga() {
   yield takeEvery('GET_FAVORITES', getFavorites);
   yield takeEvery('SEARCH_BY_KEYWORD', searchSaga);
+  yield takeEvery('ADD_TO_FAVORITES', addFavorite)
 }; // End rootSaga
+
+// ⬇ addFavorites below:
+function* addFavorite(action) {
+  console.log(`In addFavorites, url to add is ${action.payload}`);
+
+  // try wrapper for no error path
+  try {
+
+    // tell axios to POST the gif url
+    // dispatched in the action.payload
+    yield axios.post('/api/favorite', action.payload);
+
+    // run the get to recieve updated info
+    yield put({
+      type: 'GET_FAVORITES'
+    });
+  }
+
+  // fires on error
+  catch (error) {
+    console.error(`Issue in POST ${error}`);
+  };
+};
 
 // ⬇ searchSaga below:
 function* searchSaga(action) {
