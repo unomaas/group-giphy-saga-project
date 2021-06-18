@@ -15,6 +15,7 @@ export default function FavoritesView() {
   }, []);
   //#endregion ⬆⬆ State variables above. 
 
+  
   //#region ⬇⬇ Event handlers below:
   const getFavorites = () => {
     dispatch({ type: 'GET_FAVORITES' })
