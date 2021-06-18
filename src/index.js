@@ -36,7 +36,8 @@ function* rootSaga() {
 
 // ⬇ addFavorites below:
 function* addFavorite(action) {
-  console.log(`In addFavorites, url to add is ${action.payload}`);
+  console.log(`In addFavorites, url to add is ${action.payload.images?.original.url}`);
+
   // try wrapper for no error path
   try {
     // tell axios to POST the gif url
