@@ -25,7 +25,29 @@ router.get('/', (req, res) => {
 
 // add a new favorite
 router.post('/', (req, res) => {
-  res.sendStatus(200);
+  
+  // gifToFavorite is the body of the request
+  // should be the gif url
+  const gifToFavorite = req.body
+
+  // SQL Insert statement
+  const queryString = `INSERT INTO "favorites" ("gif_url") 
+                       VALUES ($1);`
+
+  // inject query string into database
+  pool.query(queryString, [gifToFavorite])
+  
+  // async call garners result (OK)
+  .then( () => {
+    res.sendStatus(201);
+  })
+
+  // catch for error
+  .catch( err => {
+    console.error(`There was a problem adding to favorites ${err}`);
+    res.sendStatus(500);
+  })
+
 });
 
 // update given favorite with a category id
