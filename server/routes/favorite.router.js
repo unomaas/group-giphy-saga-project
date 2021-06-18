@@ -31,6 +31,8 @@ router.post('/', (req, res) => {
   
   const gifToFavorite = req.body;
 
+  console.log('THIS IS THE GIF URL TO FAVORITE', gifToFavorite)
+
   // SQL Insert statement
   const queryString = `INSERT INTO "favorites" ("gif_url") 
                        VALUES ($1);`
